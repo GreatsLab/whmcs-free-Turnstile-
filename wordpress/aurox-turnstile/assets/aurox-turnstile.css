@@ -1,0 +1,77 @@
+/*!
+ * Aurox Turnstile v1.0.0 — Protected by AuroxHost
+ * (c) 2026 Chimnadindu Great Chibueze · https://auroxhost.com · MIT
+ */
+.aurox-ts-box {
+  margin: 14px 0 16px;
+  width: 100%;
+  max-width: 100%;
+  clear: both;
+}
+.aurox-ts-widget {
+  min-height: 65px;
+  width: 100%;
+}
+.aurox-ts-widget iframe { max-width: 100%; }
+
+.aurox-ts-error,
+.aurox-ts-flash {
+  display: block;
+  margin: 0 0 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #f5c2c0;
+  background: #fdecea;
+  color: #8c1d18;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.aurox-ts-flash { margin: 16px 0; }
+.aurox-ts-error[hidden] { display: none !important; }
+
+.aurox-ts-badge,
+.aurox-ts-badge:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 3px 10px 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(30, 107, 255, .18);
+  background: rgba(30, 107, 255, .06);
+  color: #1e6bff;
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: .01em;
+  text-decoration: none !important;
+  transition: background .15s ease, border-color .15s ease;
+}
+.aurox-ts-badge:hover,
+.aurox-ts-badge:focus {
+  background: rgba(30, 107, 255, .12);
+  border-color: rgba(30, 107, 255, .35);
+  color: #1450c8;
+}
+.aurox-ts-badge strong {
+  font-weight: 700;
+  background: linear-gradient(135deg, #1e6bff, #7b5cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.aurox-ts-badge svg { flex: 0 0 auto; color: #1e6bff; }
+
+/* Dark theme (when the widget theme is set to "dark") */
+.aurox-ts-box.is-dark .aurox-ts-badge,
+.aurox-ts-box.is-dark .aurox-ts-badge:visited {
+  border-color: rgba(122, 162, 255, .3);
+  background: rgba(122, 162, 255, .1);
+  color: #a9c1ff;
+}
+.aurox-ts-box.is-dark .aurox-ts-badge strong {
+  background: linear-gradient(135deg, #7aa2ff, #b3a1ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.aurox-ts-box.is-dark .aurox-ts-badge svg { color: #7aa2ff; }

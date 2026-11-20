@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: PHP syntax
+        run: find whmcs wordpress php -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: JS syntax
+        run: |
+          node --check whmcs/modules/addons/aurox_turnstile/assets/aurox-turnstile.js
+          node --check wordpress/aurox-turnstile/assets/aurox-turnstile-wp.js
+      - name: Node tests
+        run: cd node && npm test
+
+  release:
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build zips
+        run: |
+          mkdir -p dist
+          (cd whmcs && zip -r ../dist/aurox-turnstile-whmcs.zip modules)
+          (cd wordpress && zip -r ../dist/aurox-turnstile-wordpress.zip aurox-turnstile)
+          zip -j dist/aurox-turnstile-php.zip php/AuroxTurnstile.php php/example.php LICENSE
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip

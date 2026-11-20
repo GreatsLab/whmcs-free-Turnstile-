@@ -1,0 +1,14 @@
+{
+  "name": "aurox-turnstile",
+  "version": "1.0.0",
+  "description": "Free Cloudflare Turnstile verification and Express middleware for Node.js. Protected by AuroxHost.",
+  "main": "aurox-turnstile.js",
+  "files": ["aurox-turnstile.js", "README.md"],
+  "engines": { "node": ">=18" },
+  "scripts": { "test": "node test.js" },
+  "keywords": ["cloudflare", "turnstile", "captcha", "express", "middleware", "bot-protection", "auroxhost"],
+  "author": "Chimnadindu Great Chibueze (JustDeGreat) <https://auroxhost.com>",
+  "homepage": "https://github.com/GreatsLab/whmcs-free-Turnstile-",
+  "repository": { "type": "git", "url": "https://github.com/GreatsLab/whmcs-free-Turnstile-.git", "directory": "node" },
+  "license": "MIT"
+}
